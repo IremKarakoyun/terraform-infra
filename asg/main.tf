@@ -15,6 +15,19 @@ data "aws_ami" "ubuntu" {
 }
 
 
+data "terraform_remote_state" "vpc" {
+  backend = "remote"
+
+  config = {
+    organization = "kurtkaya"
+    workspaces = {
+      name = "vpc"
+    }
+  }
+}
+
+
+
 module "asg" {
   source  = "terraform-aws-modules/autoscaling/aws"
   # Autoscaling group

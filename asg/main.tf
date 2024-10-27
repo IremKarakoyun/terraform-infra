@@ -37,7 +37,8 @@ module "asg" {
   desired_capacity          = 1
   wait_for_capacity_timeout = 0
   health_check_type         = "EC2"
-  availability_zones = ["us-east-1a", "us-east-1b"]
+  vpc_zone_identifier       = data.terraform_remote_state.vpc.outputs.private_subnets
+
   # Launch template
   launch_template_name        = "example-asg"
   launch_template_description = "Launch template example"

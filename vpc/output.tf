@@ -9,3 +9,7 @@ output public_subnets {
 output vpc_id {
     value = module.vpc.vpc_id
 }
+
+output launch_template_arn {
+    value = module.vpc.launch_template_arn
+}
